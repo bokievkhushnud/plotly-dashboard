@@ -208,7 +208,7 @@ app = Dash(
         {"name": "viewport", "content": "width=device-width, initial-scale=1.0"}
     ],
 )
-
+server = app.server
 
 # Main layout
 app.layout = html.Div(
@@ -345,4 +345,5 @@ def update_output(outcome, state, start_date, end_date):
 
 
 if __name__ == "__main__":
-    app.run_server(debug=False)
+    app.run_server("0.0.0.0", debug=False, port=int(
+        os.environ.get('PORT', 8000)))
